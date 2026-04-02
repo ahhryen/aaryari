@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aaryan — Skills</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0c;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --accent: #c9a96e;
+      --accent3: #a07cc5;
+      --text: #e8e3dc;
+      --muted: #7a7570;
+      --nav-h: 68px;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      background: url('aaryanboo.jpg') center top / cover no-repeat;
+      opacity: 0.13;
+      filter: blur(2px) grayscale(30%);
+      z-index: 0;
+      transform: scale(1.05);
+    }
+    .page-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,12,0.5) 0%, rgba(10,10,12,0.7) 100%);
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(10,10,12,0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    nav a:hover {
+      color: var(--text);
+      border-color: var(--border);
+      background: var(--surface);
+    }
+    nav a.active {
+      color: var(--accent3);
+      border-color: rgba(160,124,197,0.3);
+      background: rgba(160,124,197,0.07);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: calc(var(--nav-h) + 60px) 60px 80px;
+    }
+
+    /* ── Hero image strip at top ── */
+    .hero-photo {
+      width: 100%;
+      max-width: 900px;
+      height: 240px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 60px;
+      animation: fadeUp 0.7s ease both;
+      flex-shrink: 0;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .hero-photo .img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #15121e, #0f0f18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(10,10,12,0.8) 100%);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Skills section ── */
+    .skills-section {
+      width: 100%;
+      max-width: 900px;
+      animation: fadeUp 0.7s 0.15s ease both;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent3);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .section-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+    }
+    .section-header h1 em {
+      font-style: italic;
+      color: var(--accent3);
+    }
+
+    .divider-center {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent3), transparent);
+      margin: 20px auto 0;
+    }
+
+    /* ── Skill grid ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 22px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .skill-card:nth-child(1) { animation-delay: 0.1s; }
+    .skill-card:nth-child(2) { animation-delay: 0.15s; }
+    .skill-card:nth-child(3) { animation-delay: 0.2s; }
+    .skill-card:nth-child(4) { animation-delay: 0.25s; }
+    .skill-card:nth-child(5) { animation-delay: 0.3s; }
+    .skill-card:nth-child(6) { animation-delay: 0.35s; }
+    .skill-card:nth-child(7) { animation-delay: 0.4s; }
+
+    .skill-card:hover {
+      background: rgba(160,124,197,0.07);
+      border-color: rgba(160,124,197,0.22);
+      transform: translateY(-3px);
+    }
+
+    .skill-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .skill-info strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .skill-info span {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: calc(var(--nav-h) + 30px) 24px 60px; }
+      .hero-photo { height: 160px; margin-bottom: 36px; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-bg"></div>
+
+  <nav>
+    <a href="about.html">About</a>
+    <a href="interests.html">Interests</a>
+    <a href="skills.html" class="active">Skills</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main class="content">
+
+    <div class="hero-photo">
+      <img src="aaryanboo.jpg" alt="Aaryan"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="img-placeholder" style="display:none;">📸 &nbsp; aaryanboo.jpg</div>
+    </div>
+
+    <section class="skills-section">
+      <div class="section-header">
+        <div class="eyebrow">What I bring</div>
+        <h1>My <em>Skills</em></h1>
+        <div class="divider-center"></div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🎮</div>
+          <div class="skill-info">
+            <strong>Lua Programming</strong>
+            <span>I've used Lua to make small game projects on ROBLOX</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🎬</div>
+          <div class="skill-info">
+            <strong>Video Editing</strong>
+            <span>YouTube videos to anime edits, I've done them all</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-info">
+            <strong>Web Development</strong>
+            <span>You're looking at it right now ✌️</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <div class="skill-info">
+            <strong>Graphic Design</strong>
+            <span>I've made graphics for my project in EP "Sigmatizer"</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">📱</div>
+          <div class="skill-info">
+            <strong>Digital Content Creation</strong>
+            <span>From reels to YouTube videos, I have experience in both</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🤝</div>
+          <div class="skill-info">
+            <strong>Teamwork</strong>
+            <span>I work efficiently will everyone around me and bring out the best of all of us</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

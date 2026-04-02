@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aaryan — Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0c;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --accent: #c9a96e;
+      --accent4: #72b8a0;
+      --text: #e8e3dc;
+      --muted: #7a7570;
+      --nav-h: 68px;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      background: url('aaryanmask.jpg') center center / cover no-repeat;
+      opacity: 0.13;
+      filter: blur(2px) grayscale(30%);
+      z-index: 0;
+      transform: scale(1.05);
+    }
+    .page-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,12,0.4) 0%, rgba(10,10,12,0.7) 100%);
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(10,10,12,0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    nav a:hover {
+      color: var(--text);
+      border-color: var(--border);
+      background: var(--surface);
+    }
+    nav a.active {
+      color: var(--accent4);
+      border-color: rgba(114,184,160,0.3);
+      background: rgba(114,184,160,0.07);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding: calc(var(--nav-h) + 60px) 60px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Photo frame from About page ── */
+    .photo-side {
+      flex: 0 0 auto;
+      margin-bottom: 40px;
+    }
+    .photo-frame {
+      width: 320px;
+      height: 400px;
+      position: relative;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -12px -12px 12px 12px;
+      border: 1px solid rgba(114,184,160,0.25);
+      border-radius: 4px;
+      z-index: 0;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+    .photo-frame .img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #1a1a20, #12121a);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent4);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .section-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+    }
+    .section-header h1 em {
+      font-style: italic;
+      color: var(--accent4);
+    }
+    .section-header p {
+      margin-top: 16px;
+      font-size: 1rem;
+      color: rgba(232,227,220,0.6);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .divider-center {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent4), transparent);
+      margin: 20px auto 0;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 32px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .contact-card:hover {
+      background: rgba(114,184,160,0.06);
+      border-color: rgba(114,184,160,0.25);
+      transform: translateY(-3px);
+    }
+    .contact-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(114,184,160,0.1);
+      border: 1px solid rgba(114,184,160,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent4);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .contact-value {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+    .contact-arrow {
+      font-size: 1.1rem;
+      color: var(--muted);
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .contact-card:hover .contact-arrow {
+      transform: translateX(4px);
+      color: var(--accent4);
+    }
+
+    .form-wrap {
+      margin-top: 36px;
+      padding: 36px 40px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    .form-title em { font-style: italic; color: var(--accent4); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      outline: none;
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .submit-btn {
+      margin-top: 6px;
+      width: 100%;
+      padding: 15px 24px;
+      background: rgba(114,184,160,0.12);
+      border: 1px solid rgba(114,184,160,0.3);
+      border-radius: 8px;
+      color: var(--accent4);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: rgba(114,184,160,0.2);
+      border-color: rgba(114,184,160,0.5);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: calc(var(--nav-h) + 30px) 24px 60px; }
+      .photo-frame { width: 100%; height: 280px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-bg"></div>
+
+  <nav>
+    <a href="about.html">About</a>
+    <a href="interests.html">Interests</a>
+    <a href="skills.html">Skills</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <main class="content">
+
+    <div class="photo-side">
+      <div class="photo-frame">
+        <img src="aaryanmask.jpg" alt="Aaryan"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="img-placeholder" style="display:none;">📸<br><br>aaryanmask.jpg</div>
+      </div>
+    </div>
+
+    <section class="contact-section">
+      <div class="section-header">
+        <div class="eyebrow">Let's connect</div>
+        <h1>Get in <em>Touch</em></h1>
+        <div class="divider-center"></div>
+        <p>Got something to ask? ASK AWAY! 😂😂😂</p>
+      </div>
+
+      <div class="contact-cards">
+        <a class="contact-card" href="mailto:your.email@example.com">
+          <div class="contact-icon-wrap">✉️</div>
+          <div class="contact-info">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">TimalsinaAaryan@gmail.com</div>
+          </div>
+          <div class="contact-arrow">→</div>
+        </a>
+
+        <a class="contact-card" href="tel:+9779800000000">
+          <div class="contact-icon-wrap">📞</div>
+          <div class="contact-info">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+977 9703460377</div>
+          </div>
+          <div class="contact-arrow">→</div>
+        </a>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-title">Send a <em>Message</em></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Ram Karki">
+          </div>
+          <div class="form-group">
+            <label>Your Email</label>
+            <input type="email" placeholder="RamKarki@example.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="What's it about?">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Write your message here..."></textarea>
+        </div>
+        <button class="submit-btn">Send Message →</button>
+      </div>
+
+    </section>
+  </main>
+
+</body>
+</html>

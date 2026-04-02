@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aaryan — Interests</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0c;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --accent: #c9a96e;
+      --accent2: #8fa8d4;
+      --text: #e8e3dc;
+      --muted: #7a7570;
+      --nav-h: 68px;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      background: url('aaryantt.jpg') center center / cover no-repeat;
+      opacity: 0.13;
+      filter: blur(2px) grayscale(30%);
+      z-index: 0;
+      transform: scale(1.05);
+    }
+    .page-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,10,12,0.6) 0%, rgba(10,10,12,0.3) 100%);
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(10,10,12,0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    nav a:hover {
+      color: var(--text);
+      border-color: var(--border);
+      background: var(--surface);
+    }
+    nav a.active {
+      color: var(--accent);
+      border-color: rgba(201,169,110,0.3);
+      background: rgba(201,169,110,0.07);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+
+    /* ── Interests layout: text left, photo right ── */
+    .interests-wrap {
+      display: flex;
+      align-items: center;
+      gap: 72px;
+      max-width: 1000px;
+      width: 100%;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .text-side {
+      flex: 1;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .text-side h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.14;
+      margin-bottom: 24px;
+    }
+    .text-side h1 em {
+      font-style: italic;
+      color: var(--accent2);
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent2), transparent);
+      margin-bottom: 28px;
+    }
+
+    .interest-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .interest-list li {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(232,227,220,0.85);
+      line-height: 1.5;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .interest-list li:nth-child(1) { animation-delay: 0.05s; }
+    .interest-list li:nth-child(2) { animation-delay: 0.10s; }
+    .interest-list li:nth-child(3) { animation-delay: 0.15s; }
+    .interest-list li:nth-child(4) { animation-delay: 0.20s; }
+    .interest-list li:nth-child(5) { animation-delay: 0.25s; }
+    .interest-list li:nth-child(6) { animation-delay: 0.30s; }
+
+    .interest-list li:hover {
+      background: rgba(143,168,212,0.07);
+      border-color: rgba(143,168,212,0.2);
+      transform: translateX(4px);
+    }
+
+    .interest-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+
+    /* ── Photo side ── */
+    .photo-side {
+      flex: 0 0 auto;
+    }
+
+    .photo-frame {
+      width: 300px;
+      height: 400px;
+      position: relative;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: 12px -12px -12px 12px;
+      border: 1px solid rgba(143,168,212,0.25);
+      border-radius: 4px;
+      z-index: 0;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+    .photo-frame .img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #1a1a20, #12121a);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .interests-wrap { flex-direction: column-reverse; gap: 40px; align-items: flex-start; padding: 40px 0; }
+      .photo-frame { width: 100%; height: 260px; }
+      .content { padding-left: 24px; padding-right: 24px; align-items: flex-start; padding-top: calc(var(--nav-h) + 20px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-bg"></div>
+
+  <nav>
+    <a href="about.html">About</a>
+    <a href="interests.html" class="active">Interests</a>
+    <a href="skills.html">Skills</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main class="content">
+    <div class="interests-wrap">
+
+      <div class="text-side">
+        <div class="eyebrow">What I love</div>
+        <h1>My <em>Interests</em></h1>
+        <div class="divider"></div>
+
+        <ul class="interest-list">
+          <li>
+            <span class="interest-icon">💻</span>
+            <span>Programming </span>
+          </li>
+          <li>
+            <span class="interest-icon">🎌</span>
+            <span>Watching Anime</span>
+          </li>
+          <li>
+            <span class="interest-icon">🎵</span>
+            <span>Listening to Music</span>
+          </li>
+          <li>
+            <span class="interest-icon">📖</span>
+            <span>Reading Manga</span>
+          </li>
+          <li>
+            <span class="interest-icon">🎮</span>
+            <span>Playing Video Games</span>
+          </li>
+          <li>
+            <span class="interest-icon">🏀</span>
+            <span>Playing Basketball </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="photo-side">
+        <div class="photo-frame">
+          <img src="aaryantt.jpg" alt="Aaryan"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;">📸<br><br>aaryantt.jpg</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
